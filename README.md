@@ -1,4 +1,4 @@
-# Weenas Homepage
+# weenas.com
 
 [weenas.com](https://weenas.com) 的源码：Weenas 所有项目的索引页。纯静态站点（HTML / CSS / JS），无需构建，支持中英双语、移动端与深色模式。
 
