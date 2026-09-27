@@ -1,0 +1,16 @@
+{
+  "name": "Weenas",
+  "short_name": "Weenas",
+  "icons": [
+    {
+      "src": "weenas-favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "weenas-favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

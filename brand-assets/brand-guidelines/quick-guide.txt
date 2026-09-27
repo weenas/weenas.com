@@ -1,0 +1,15 @@
+WEENAS — QUICK BRAND GUIDE
+
+Primary direction
+Blue minimalist ribbon-style W with the modern Weenas wordmark.
+
+Recommended use
+• Full logo: website header, landing pages, documents.
+• W icon: favicon, app icon, social avatar, compact navigation.
+• Keep generous clear space around the mark.
+• Prefer light/white backgrounds for the current gradient artwork.
+• Do not stretch, skew, rotate, recolor, or add effects.
+
+Source quality
+This package is derived from the approved raster concept. PNG exports are suitable for web/app use.
+For a true vector SVG/PDF master, redraw the approved mark as vector paths before large-format or print use.
