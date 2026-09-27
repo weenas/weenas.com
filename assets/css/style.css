@@ -100,6 +100,8 @@ p { margin: 0 0 1em; }
   color: var(--text);
 }
 .brand:hover { color: var(--text); }
+.brand { flex-shrink: 0; }
+.brand-icon { width: 44px; height: 44px; border-radius: 10px; background: #fff; }
 
 .nav { display: flex; gap: 24px; margin-left: auto; }
 .nav a { color: var(--muted); font-weight: 500; }
@@ -122,7 +124,7 @@ p { margin: 0 0 1em; }
 /* Hero */
 .hero {
   position: relative;
-  padding: 88px 0 24px;
+  padding: 48px 0 24px;
   text-align: center;
 }
 .hero::before {
@@ -138,6 +140,18 @@ p { margin: 0 0 1em; }
     radial-gradient(closest-side at 65% 45%, color-mix(in srgb, var(--accent) 14%, transparent), transparent);
   pointer-events: none;
   z-index: -1;
+}
+.hero-logo {
+  width: 256px;
+  height: auto;
+  margin: 0 auto 28px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+@media (max-width: 479px) {
+  .hero-logo { width: 200px; }
+  .header-inner { gap: 12px; }
 }
 .hero h1 {
   font-size: clamp(2rem, 5vw, 3.25rem);
