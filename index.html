@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weenas</title>
+  <meta name="description" content="Weenas 的项目：映湾 CastBay 等。">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:title" content="Weenas">
+  <meta property="og:description" content="Projects by Weenas, including CastBay.">
+  <meta property="og:url" content="https://weenas.com/">
+  <link rel="canonical" href="https://weenas.com/">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="./" class="brand" aria-label="Weenas">
+        <img src="assets/img/logo.svg" alt="" width="32" height="32">
+        <span>Weenas</span>
+      </a>
+
+      <nav class="nav" aria-label="Main">
+        <a href="#projects" data-i18n="nav.projects"></a>
+        <a class="github-link" href="https://github.com/weenas">GitHub</a>
+      </nav>
+
+      <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Language / 语言">English</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1 data-i18n="hero.title"></h1>
+        <p class="lead" data-i18n="hero.subtitle"></p>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="visually-hidden" data-i18n="projects.title"></h2>
+        <div class="projects" id="project-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Weenas. <span data-i18n="footer.rights"></span></p>
+      <a href="https://github.com/weenas">GitHub</a>
+    </div>
+  </footer>
+
+  <script src="assets/js/content.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
