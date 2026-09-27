@@ -1,15 +1,20 @@
 # Weenas Homepage
 
-Weenas 官方网站 —— 纯静态站点（HTML / CSS / JS），无需构建，支持中英双语切换、移动端适配与深色模式。
+[weenas.com](https://weenas.com) 的源码：Weenas 所有项目的索引页。纯静态站点（HTML / CSS / JS），无需构建，支持中英双语、移动端与深色模式。
+
+目前收录的项目：
+
+- **映湾 CastBay**：Android 电视投屏接收器（AirPlay / DLNA），[castbay.weenas.com](https://castbay.weenas.com) · [GitHub](https://github.com/weenas/castbay)
 
 ## 目录结构
 
 ```
-index.html            页面结构
-assets/css/style.css  样式
-assets/js/content.js  全部中英文文案（修改内容只需改这里）
-assets/js/main.js     语言切换、渲染与交互逻辑
-assets/img/logo.svg   Logo / favicon
+index.html              页面结构
+assets/css/style.css    样式
+assets/js/content.js    中英文文案与项目列表（增删项目只需改这里）
+assets/js/main.js       语言切换与渲染逻辑
+assets/img/logo.svg     Weenas Logo / favicon
+assets/img/projects/    各项目图标（castbay.svg 取自 castbay 仓库 branding/cb-monogram-dark.svg）
 ```
 
 ## 本地预览
@@ -19,17 +24,12 @@ python3 -m http.server 8000
 # 打开 http://localhost:8000
 ```
 
-## 修改内容
+## 新增项目
 
-所有文字都在 `assets/js/content.js` 中，按 `zh` / `en` 分开维护。标注 `TODO` 的是占位文案，请替换为真实信息：
-
-- 标语与公司简介
-- 统计数据（`about.stats`，设为空数组即可隐藏）
-- 业务列表（`services.items`，可增减条目）
-- 联系邮箱与地址
-
-语言默认跟随浏览器语言，用户手动切换后会记住选择。
+1. 把项目图标放到 `assets/img/projects/<id>.svg`（或 png）。
+2. 在 `assets/js/content.js` 的 `projects` 数组里追加一项，字段参照 CastBay：
+   `name`、`tagline`、`description`、`tags` 都分 `zh` / `en`；`links` 的第一项是主链接（项目名也链到它）。
 
 ## 部署
 
-站点是纯静态文件，可直接部署到 GitHub Pages、Cloudflare Pages、Netlify、Vercel 或任意静态服务器（上传仓库根目录即可）。
+站点是纯静态文件，把仓库根目录发布出去即可。建议和 CastBay 一样用 Cloudflare Pages：构建命令留空，输出目录为 `/`，再把 `weenas.com` 绑定为自定义域名。

@@ -4,97 +4,52 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Weenas</title>
-  <meta name="description" content="Weenas 官方网站">
+  <meta name="description" content="Weenas 的项目：映湾 CastBay 等。">
   <meta name="theme-color" content="#4f46e5">
+  <meta property="og:title" content="Weenas">
+  <meta property="og:description" content="Projects by Weenas, including CastBay.">
+  <meta property="og:url" content="https://weenas.com/">
+  <link rel="canonical" href="https://weenas.com/">
   <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#top" class="brand" aria-label="Weenas">
+      <a href="./" class="brand" aria-label="Weenas">
         <img src="assets/img/logo.svg" alt="" width="32" height="32">
         <span>Weenas</span>
       </a>
 
-      <nav class="nav" id="nav" aria-label="Main">
-        <a href="#about" data-i18n="nav.about"></a>
-        <a href="#services" data-i18n="nav.services"></a>
-        <a href="#why" data-i18n="nav.why"></a>
-        <a href="#contact" data-i18n="nav.contact"></a>
+      <nav class="nav" aria-label="Main">
+        <a href="#projects" data-i18n="nav.projects"></a>
+        <a class="github-link" href="https://github.com/weenas">GitHub</a>
       </nav>
 
-      <div class="header-actions">
-        <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">EN</button>
-        <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+      <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Language / 语言">English</button>
     </div>
   </header>
 
-  <main id="top">
+  <main>
     <section class="hero">
       <div class="container">
-        <p class="eyebrow" data-i18n="hero.eyebrow"></p>
         <h1 data-i18n="hero.title"></h1>
         <p class="lead" data-i18n="hero.subtitle"></p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary" data-i18n="hero.cta"></a>
-          <a href="#services" class="btn btn-ghost" data-i18n="hero.secondary"></a>
-        </div>
       </div>
     </section>
 
-    <section id="about" class="section">
-      <div class="container about">
-        <div>
-          <h2 data-i18n="about.title"></h2>
-          <p data-i18n="about.body1"></p>
-          <p data-i18n="about.body2"></p>
-        </div>
-        <ul class="stats" id="stats"></ul>
-      </div>
-    </section>
-
-    <section id="services" class="section section-alt">
+    <section id="projects" class="section">
       <div class="container">
-        <h2 class="section-title" data-i18n="services.title"></h2>
-        <p class="section-sub" data-i18n="services.subtitle"></p>
-        <div class="cards" id="service-cards"></div>
-      </div>
-    </section>
-
-    <section id="why" class="section">
-      <div class="container">
-        <h2 class="section-title" data-i18n="why.title"></h2>
-        <ol class="features" id="why-list"></ol>
-      </div>
-    </section>
-
-    <section id="contact" class="section section-alt">
-      <div class="container contact">
-        <div>
-          <h2 data-i18n="contact.title"></h2>
-          <p data-i18n="contact.body"></p>
-        </div>
-        <dl class="contact-list">
-          <div>
-            <dt data-i18n="contact.emailLabel"></dt>
-            <dd><a id="contact-email" href="#"></a></dd>
-          </div>
-          <div>
-            <dt data-i18n="contact.addressLabel"></dt>
-            <dd data-i18n="contact.address"></dd>
-          </div>
-        </dl>
+        <h2 class="visually-hidden" data-i18n="projects.title"></h2>
+        <div class="projects" id="project-list"></div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">
+    <div class="container footer-inner">
       <p>&copy; <span id="year"></span> Weenas. <span data-i18n="footer.rights"></span></p>
+      <a href="https://github.com/weenas">GitHub</a>
     </div>
   </footer>
 

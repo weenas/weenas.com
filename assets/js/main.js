@@ -5,22 +5,6 @@
   var STORAGE_KEY = "weenas-lang";
   var LANGS = { zh: "zh-CN", en: "en" };
 
-  // Feather-style line icons (24x24, stroke = currentColor)
-  var ICONS = {
-    design: '<path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/>',
-    code: '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>',
-    cloud: '<path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>',
-    chart: '<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>',
-    shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-    users: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>'
-  };
-
-  function icon(name) {
-    return '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" ' +
-      'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-      (ICONS[name] || ICONS.design) + "</svg>";
-  }
-
   function get(obj, path) {
     return path.split(".").reduce(function (o, k) { return o && o[k]; }, obj);
   }
@@ -44,42 +28,52 @@
     try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) { /* storage unavailable */ }
   }
 
-  function renderStats(t) {
-    var list = document.getElementById("stats");
-    list.textContent = "";
-    var stats = t.about.stats || [];
-    list.hidden = stats.length === 0;
-    stats.forEach(function (s) {
-      var li = el("li");
-      li.appendChild(el("strong", null, s.value));
-      li.appendChild(el("span", null, s.label));
-      list.appendChild(li);
+  function renderProject(p, lang) {
+    var card = el("article", "project");
+
+    var head = el("div", "project-head");
+    var logo = el("div", "project-logo");
+    if (p.logoBg) logo.style.background = p.logoBg;
+    var img = el("img");
+    img.src = p.logo;
+    img.alt = "";
+    img.width = 56;
+    img.height = 56;
+    logo.appendChild(img);
+    head.appendChild(logo);
+
+    var titles = el("div");
+    var h3 = el("h3");
+    var nameLink = el("a", null, p.name[lang]);
+    nameLink.href = p.links[0].url;
+    h3.appendChild(nameLink);
+    titles.appendChild(h3);
+    titles.appendChild(el("p", "project-tagline", p.tagline[lang]));
+    head.appendChild(titles);
+    card.appendChild(head);
+
+    card.appendChild(el("p", "project-desc", p.description[lang]));
+
+    var tags = el("ul", "tags");
+    p.tags[lang].forEach(function (t) { tags.appendChild(el("li", null, t)); });
+    card.appendChild(tags);
+
+    var actions = el("div", "project-actions");
+    p.links.forEach(function (l) {
+      var a = el("a", "btn btn-" + l.kind, l.label[lang]);
+      a.href = l.url;
+      actions.appendChild(a);
     });
+    card.appendChild(actions);
+
+    return card;
   }
 
-  function renderServices(t) {
-    var wrap = document.getElementById("service-cards");
-    wrap.textContent = "";
-    t.services.items.forEach(function (s) {
-      var card = el("article", "card");
-      var iconBox = el("div", "card-icon");
-      iconBox.innerHTML = icon(s.icon);
-      card.appendChild(iconBox);
-      card.appendChild(el("h3", null, s.title));
-      card.appendChild(el("p", null, s.body));
-      wrap.appendChild(card);
-    });
-  }
-
-  function renderWhy(t) {
-    var list = document.getElementById("why-list");
+  function renderProjects(t, lang) {
+    var list = document.getElementById("project-list");
     list.textContent = "";
-    t.why.items.forEach(function (w) {
-      var li = el("li");
-      li.appendChild(el("h3", null, w.title));
-      li.appendChild(el("p", null, w.body));
-      list.appendChild(li);
-    });
+    content.projects.forEach(function (p) { list.appendChild(renderProject(p, lang)); });
+    list.appendChild(el("div", "project project-more", t.projects.more));
   }
 
   function apply(lang) {
@@ -93,38 +87,18 @@
       if (value != null) node.textContent = value;
     });
 
-    renderStats(t);
-    renderServices(t);
-    renderWhy(t);
-
+    renderProjects(t, lang);
     document.getElementById("lang-toggle").textContent = t.langToggle;
   }
 
   var lang = readLang();
   apply(lang);
-
-  var email = document.getElementById("contact-email");
-  email.textContent = content.email;
-  email.href = "mailto:" + content.email;
   document.getElementById("year").textContent = new Date().getFullYear();
 
   document.getElementById("lang-toggle").addEventListener("click", function () {
     lang = lang === "zh" ? "en" : "zh";
     saveLang(lang);
     apply(lang);
-  });
-
-  var menuBtn = document.getElementById("menu-toggle");
-  var nav = document.getElementById("nav");
-  function setMenu(open) {
-    nav.classList.toggle("open", open);
-    menuBtn.setAttribute("aria-expanded", String(open));
-  }
-  menuBtn.addEventListener("click", function () {
-    setMenu(!nav.classList.contains("open"));
-  });
-  nav.addEventListener("click", function (e) {
-    if (e.target.tagName === "A") setMenu(false);
   });
 
   var header = document.querySelector(".site-header");
