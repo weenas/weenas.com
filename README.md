@@ -20,7 +20,7 @@ assets/img/og-image.png 社交分享图（1200×630）
 404.html                404 页面（Cloudflare Pages 会自动使用）
 robots.txt, sitemap.xml 搜索引擎抓取说明与站点地图
 brand-assets/           Weenas Logo（SVG 母版与 PNG 导出）、favicon 与品牌说明
-assets/img/projects/    各项目图标（castbay.svg 取自 castbay 仓库 branding/cb-monogram-dark.svg）
+assets/img/projects/    各项目图标（castbay-light/-dark.svg 取自 AndroPlay 仓库 branding/castbay-signal-final/symbol-light/-dark.svg）
 ```
 
 首页使用 `brand-assets/svg/` 下的矢量 Logo，深色主题下显示反白版；右上角可切换主题（跟随系统 / 浅色 / 深色，默认跟随系统，由 `assets/js/boot.js` 处理），并接入 favicon、Apple Touch Icon、Web Manifest 和社交分享图片，详见 [品牌说明](brand-assets/README.md)。部署时需包含整个 `brand-assets/` 目录。

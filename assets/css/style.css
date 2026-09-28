@@ -216,8 +216,10 @@ html:not([data-theme]) .theme-toggle { display: none; }
   display: grid;
   place-items: center;
   border-radius: 18px;
-  background: var(--bg-alt);
+  background: var(--logo-bg, var(--bg-alt));
 }
+/* A project can set its own tile colours: --logo-bg, and --logo-bg-dark for the dark theme. */
+:root[data-theme="dark"] .project-logo { background: var(--logo-bg-dark, var(--logo-bg, var(--bg-alt))); }
 .project h3 { font-size: 1.3rem; margin: 0 0 2px; }
 .project h3 a { color: var(--text); }
 .project h3 a:hover { color: var(--primary); }
