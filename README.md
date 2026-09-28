@@ -13,11 +13,12 @@ index.html              页面结构
 assets/css/style.css    样式
 assets/js/content.js    中英文文案与项目列表（增删项目只需改这里）
 assets/js/main.js       语言切换与渲染逻辑
-brand-assets/           当前 Weenas Logo、favicon、社交分享图片与品牌说明
+assets/js/theme.js      深浅色主题（在 <head> 中加载，避免闪烁）
+brand-assets/           Weenas Logo（SVG 母版与 PNG 导出）、favicon 与品牌说明
 assets/img/projects/    各项目图标（castbay.svg 取自 castbay 仓库 branding/cb-monogram-dark.svg）
 ```
 
-首页使用 `brand-assets/` 下的 PNG Logo，并接入 favicon、Apple Touch Icon、Web Manifest 和社交分享图片。当前品牌素材是带浅色背景的位图，详见 [品牌说明](brand-assets/README.md)。部署时需包含整个 `brand-assets/` 目录。
+首页使用 `brand-assets/svg/` 下的矢量 Logo，深色主题下显示反白版；右上角可切换主题（跟随系统 / 浅色 / 深色，默认跟随系统，由 `assets/js/theme.js` 处理），并接入 favicon、Apple Touch Icon、Web Manifest 和社交分享图片，详见 [品牌说明](brand-assets/README.md)。部署时需包含整个 `brand-assets/` 目录。
 
 ## 本地预览
 

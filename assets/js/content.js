@@ -41,6 +41,7 @@ window.SITE_CONTENT = {
     },
     projects: { title: "项目", more: "更多项目，敬请期待" },
     footer: { rights: "保留所有权利。" },
+    theme: { label: "主题", auto: "跟随系统", light: "浅色", dark: "深色", hint: "点击切换" },
     langToggle: "English"
   },
 
@@ -53,6 +54,7 @@ window.SITE_CONTENT = {
     },
     projects: { title: "Projects", more: "More projects coming soon" },
     footer: { rights: "All rights reserved." },
+    theme: { label: "Theme", auto: "System", light: "Light", dark: "Dark", hint: "click to change" },
     langToggle: "中文"
   }
 };
