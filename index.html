@@ -3,28 +3,72 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Weenas</title>
-  <meta name="description" content="Weenas 的项目：映湾 CastBay 等。">
-  <meta name="theme-color" content="#061B3C">
-  <meta property="og:title" content="Weenas">
-  <meta property="og:description" content="Projects by Weenas, including CastBay.">
-  <meta property="og:url" content="https://weenas.com/">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://weenas.com/brand-assets/png/weenas-app-icon-square-1024.png">
-  <meta property="og:image:width" content="1024">
-  <meta property="og:image:height" content="1024">
-  <meta property="og:image:alt" content="Weenas logo: a symmetric W in navy and blue">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:image" content="https://weenas.com/brand-assets/png/weenas-app-icon-square-1024.png">
-  <meta name="twitter:image:alt" content="Weenas logo: a symmetric W in navy and blue">
+  <title>Weenas：映湾 CastBay 等软件项目</title>
+  <meta name="title-zh" content="Weenas：映湾 CastBay 等软件项目">
+  <meta name="title-en" content="Weenas: CastBay and other projects">
+  <meta name="description" content="Weenas 的软件项目。映湾 CastBay：免费开源的 Android 电视投屏接收器，支持 iPhone、iPad、Mac 的 AirPlay 屏幕镜像、音乐、视频和 DLNA 投屏。">
   <link rel="canonical" href="https://weenas.com/">
+  <meta name="theme-color" content="#061B3C">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Weenas">
+  <meta property="og:url" content="https://weenas.com/">
+  <meta property="og:title" content="Weenas：映湾 CastBay 等软件项目">
+  <meta property="og:description" content="映湾 CastBay：免费开源的 Android 电视投屏接收器，支持 AirPlay 与 DLNA。CastBay: a free, open-source AirPlay and DLNA receiver for Android TV.">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://weenas.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Weenas logo with the text: 映湾 CastBay 等软件项目 / CastBay and other projects by Weenas">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://weenas.com/assets/img/og-image.png">
+  <meta name="twitter:image:alt" content="Weenas logo with the text: 映湾 CastBay 等软件项目 / CastBay and other projects by Weenas">
+
   <link rel="icon" href="brand-assets/favicon/favicon.ico" sizes="any">
   <link rel="icon" href="brand-assets/svg/weenas-app-icon.svg" type="image/svg+xml">
   <link rel="icon" href="brand-assets/favicon/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="icon" href="brand-assets/favicon/favicon-16.png" type="image/png" sizes="16x16">
   <link rel="apple-touch-icon" href="brand-assets/favicon/apple-touch-icon.png" sizes="180x180">
   <link rel="manifest" href="brand-assets/favicon/site.webmanifest">
-  <script src="assets/js/theme.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://weenas.com/#organization",
+        "name": "Weenas",
+        "url": "https://weenas.com/",
+        "logo": "https://weenas.com/brand-assets/png/weenas-app-icon-square-512.png",
+        "sameAs": ["https://github.com/weenas"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://weenas.com/#website",
+        "name": "Weenas",
+        "url": "https://weenas.com/",
+        "inLanguage": ["zh-CN", "en"],
+        "publisher": { "@id": "https://weenas.com/#organization" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "映湾 CastBay",
+        "alternateName": "CastBay",
+        "url": "https://castbay.weenas.com/",
+        "description": "A free, open-source receiver that lets an Android TV receive AirPlay screen mirroring, music and video from iPhone, iPad and Mac, plus DLNA casts from video and music apps.",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Android TV 8.0+",
+        "downloadUrl": "https://github.com/weenas/castbay/releases",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "publisher": { "@id": "https://weenas.com/#organization" }
+      }
+    ]
+  }
+  </script>
+
+  <script src="assets/js/boot.js"></script>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -37,13 +81,15 @@
       </a>
 
       <nav class="nav" aria-label="Main">
-        <a href="#projects" data-i18n="nav.projects"></a>
+        <a href="#projects"><span class="zh" lang="zh-CN">项目</span> <span class="en" lang="en">Projects</span></a>
         <a class="github-link" href="https://github.com/weenas">GitHub</a>
       </nav>
 
       <div class="header-actions">
         <button class="theme-toggle" id="theme-toggle" type="button"></button>
-        <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Language / 语言">English</button>
+        <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Language / 语言">
+          <span class="zh" lang="en">English</span> <span class="en" lang="zh-CN">中文</span>
+        </button>
       </div>
     </div>
   </header>
@@ -53,27 +99,56 @@
       <div class="container">
         <img class="hero-logo logo-light" src="brand-assets/svg/weenas-symbol.svg" alt="Weenas" width="540" height="450" fetchpriority="high">
         <img class="hero-logo logo-dark" src="brand-assets/svg/weenas-symbol-reverse.svg" alt="Weenas" width="540" height="450">
-        <h1 data-i18n="hero.title"></h1>
-        <p class="lead" data-i18n="hero.subtitle"></p>
+        <h1><span class="zh" lang="zh-CN">Weenas 的项目</span> <span class="en" lang="en">Projects by Weenas</span></h1>
+        <p class="lead"><span class="zh" lang="zh-CN">我们做的软件，都在这里。</span> <span class="en" lang="en">Everything we build, in one place.</span></p>
       </div>
     </section>
 
     <section id="projects" class="section">
       <div class="container">
-        <h2 class="visually-hidden" data-i18n="projects.title"></h2>
-        <div class="projects" id="project-list"></div>
+        <h2 class="visually-hidden"><span class="zh" lang="zh-CN">项目</span> <span class="en" lang="en">Projects</span></h2>
+        <div class="projects">
+          <!-- 新增项目：复制一个 <article class="project">，改文字、链接和图标。 -->
+          <article class="project">
+            <div class="project-head">
+              <div class="project-logo" style="background: #0b0910">
+                <img src="assets/img/projects/castbay.svg" alt="CastBay" width="56" height="56" loading="lazy">
+              </div>
+              <div>
+                <h3><a href="https://castbay.weenas.com/"><span class="zh" lang="zh-CN">映湾 CastBay</span> <span class="en" lang="en">CastBay</span></a></h3>
+                <p class="project-tagline"><span class="zh" lang="zh-CN">Android 电视投屏接收器</span> <span class="en" lang="en">A casting receiver for Android TV</span></p>
+              </div>
+            </div>
+            <p class="project-desc">
+              <span class="zh" lang="zh-CN">让 Android 电视接收 iPhone、iPad、Mac 的 AirPlay 屏幕镜像、音乐和视频，也支持视频和音乐 App 自带的投屏按钮（DLNA）。免费、开源、无广告。</span>
+              <span class="en" lang="en">Lets an Android TV receive AirPlay screen mirroring, music and video from iPhone, iPad and Mac, plus the cast button in video and music apps (DLNA). Free, open source, no ads.</span>
+            </p>
+            <ul class="tags">
+              <li>Android TV</li>
+              <li>AirPlay</li>
+              <li>DLNA</li>
+              <li><span class="zh" lang="zh-CN">开源</span> <span class="en" lang="en">Open source</span></li>
+            </ul>
+            <div class="project-actions">
+              <a class="btn btn-primary" href="https://castbay.weenas.com/"><span class="zh" lang="zh-CN">访问官网</span> <span class="en" lang="en">Visit website</span></a>
+              <a class="btn btn-ghost" href="https://github.com/weenas/castbay"><span class="zh" lang="zh-CN">源码</span> <span class="en" lang="en">Source</span></a>
+              <a class="btn btn-ghost" href="https://github.com/weenas/castbay/releases"><span class="zh" lang="zh-CN">下载</span> <span class="en" lang="en">Download</span></a>
+            </div>
+          </article>
+
+          <div class="project project-more"><span class="zh" lang="zh-CN">更多项目，敬请期待</span> <span class="en" lang="en">More projects coming soon</span></div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>&copy; <span id="year"></span> Weenas. <span data-i18n="footer.rights"></span></p>
+      <p>&copy; <span id="year">2026</span> Weenas. <span class="zh" lang="zh-CN">保留所有权利。</span> <span class="en" lang="en">All rights reserved.</span></p>
       <a href="https://github.com/weenas">GitHub</a>
     </div>
   </footer>
 
-  <script src="assets/js/content.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

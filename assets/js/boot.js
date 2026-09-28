@@ -1,7 +1,12 @@
 /*
+ * Runs in <head>, before the page paints, so neither the theme nor the
+ * language flickers.
+ *
  * Colour theme: "auto" (follow the system, the default), "light" or "dark".
- * Loaded in <head> so the theme is set before the page paints.
  * <html data-theme> always holds the resolved theme, light or dark.
+ *
+ * Language: the page carries both Chinese and English text (.zh / .en);
+ * <html data-lang> picks which one shows. Without JS, Chinese shows.
  */
 (function () {
   "use strict";
@@ -49,6 +54,45 @@
     },
     next: function () {
       this.set(PREFS[(PREFS.indexOf(pref) + 1) % PREFS.length]);
+    },
+    onChange: function (fn) { listeners.push(fn); }
+  };
+
+  apply();
+})();
+
+(function () {
+  "use strict";
+
+  var STORAGE_KEY = "weenas-lang";
+  var LANGS = { zh: "zh-CN", en: "en" };
+
+  function readLang() {
+    try {
+      var saved = localStorage.getItem(STORAGE_KEY);
+      if (LANGS[saved]) return saved;
+    } catch (e) { /* storage unavailable */ }
+    return (navigator.language || "").toLowerCase().indexOf("zh") === 0 ? "zh" : "en";
+  }
+
+  var lang = readLang();
+  var listeners = [];
+
+  function apply() {
+    var root = document.documentElement;
+    root.lang = LANGS[lang];
+    root.setAttribute("data-lang", lang);
+    var title = document.querySelector('meta[name="title-' + lang + '"]');
+    if (title) document.title = title.content;
+    listeners.forEach(function (fn) { fn(lang); });
+  }
+
+  window.WeenasLang = {
+    get: function () { return lang; },
+    toggle: function () {
+      lang = lang === "zh" ? "en" : "zh";
+      try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) { /* storage unavailable */ }
+      apply();
     },
     onChange: function (fn) { listeners.push(fn); }
   };
