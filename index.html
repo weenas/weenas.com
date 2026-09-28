@@ -24,16 +24,15 @@
   <link rel="icon" href="brand-assets/favicon/favicon-16.png" type="image/png" sizes="16x16">
   <link rel="apple-touch-icon" href="brand-assets/favicon/apple-touch-icon.png" sizes="180x180">
   <link rel="manifest" href="brand-assets/favicon/site.webmanifest">
+  <script src="assets/js/theme.js"></script>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
       <a href="./" class="brand" aria-label="Weenas">
-        <picture>
-          <source srcset="brand-assets/svg/weenas-symbol-reverse.svg" media="(prefers-color-scheme: dark)">
-          <img class="brand-icon" src="brand-assets/svg/weenas-symbol.svg" alt="" width="38" height="32">
-        </picture>
+        <img class="brand-icon logo-light" src="brand-assets/svg/weenas-symbol.svg" alt="" width="38" height="32">
+        <img class="brand-icon logo-dark" src="brand-assets/svg/weenas-symbol-reverse.svg" alt="" width="38" height="32">
         <span>Weenas</span>
       </a>
 
@@ -42,17 +41,18 @@
         <a class="github-link" href="https://github.com/weenas">GitHub</a>
       </nav>
 
-      <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Language / 语言">English</button>
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button"></button>
+        <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Language / 语言">English</button>
+      </div>
     </div>
   </header>
 
   <main>
     <section class="hero">
       <div class="container">
-        <picture>
-          <source srcset="brand-assets/svg/weenas-logo-stacked-reverse.svg" media="(prefers-color-scheme: dark)">
-          <img class="hero-logo" src="brand-assets/svg/weenas-logo-stacked.svg" alt="Weenas" width="800" height="640" fetchpriority="high">
-        </picture>
+        <img class="hero-logo logo-light" src="brand-assets/svg/weenas-symbol.svg" alt="Weenas" width="540" height="450" fetchpriority="high">
+        <img class="hero-logo logo-dark" src="brand-assets/svg/weenas-symbol-reverse.svg" alt="Weenas" width="540" height="450">
         <h1 data-i18n="hero.title"></h1>
         <p class="lead" data-i18n="hero.subtitle"></p>
       </div>

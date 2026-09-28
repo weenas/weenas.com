@@ -15,19 +15,24 @@
           "Microsoft YaHei", "Noto Sans SC", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0b1020;
-    --bg-alt: #111831;
-    --surface: #151d38;
-    --text: #e2e8f0;
-    --muted: #94a3b8;
-    --border: #243056;
-    --primary: #4D8EFF;
-    --primary-hover: #7AABFF;
-    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .3);
-  }
+/* theme.js sets data-theme from the visitor's choice or the system setting. */
+:root { color-scheme: light; }
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0b1020;
+  --bg-alt: #111831;
+  --surface: #151d38;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --border: #243056;
+  --primary: #4D8EFF;
+  --primary-hover: #7AABFF;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .3);
 }
+
+/* Each logo ships a light-background and a reversed (dark-background) version. */
+:root:not([data-theme="dark"]) .logo-dark,
+:root[data-theme="dark"] .logo-light { display: none; }
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -109,6 +114,23 @@ p { margin: 0 0 1em; }
 .nav a:hover { color: var(--text); }
 @media (max-width: 479px) { .nav a:first-child { display: none; } }
 
+.header-actions { display: flex; align-items: center; gap: 8px; }
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.theme-toggle:hover { border-color: var(--primary); color: var(--primary); }
+.theme-toggle svg { width: 18px; height: 18px; }
+
 .lang-toggle {
   font: inherit;
   font-size: .875rem;
@@ -143,12 +165,12 @@ p { margin: 0 0 1em; }
   z-index: -1;
 }
 .hero-logo {
-  width: 240px;
+  width: 132px;
   height: auto;
   margin: 0 auto 28px;
 }
 @media (max-width: 479px) {
-  .hero-logo { width: 180px; }
+  .hero-logo { width: 108px; }
   .header-inner { gap: 12px; }
 }
 .hero h1 {
@@ -232,9 +254,8 @@ p { margin: 0 0 1em; }
 }
 .btn-primary { background: var(--primary); color: #fff; }
 .btn-primary:hover { background: var(--primary-hover); color: #fff; }
-@media (prefers-color-scheme: dark) {
-  .btn-primary, .btn-primary:hover { color: #0b1020; }
-}
+:root[data-theme="dark"] .btn-primary,
+:root[data-theme="dark"] .btn-primary:hover { color: #0b1020; }
 .btn-ghost { color: var(--text); border-color: var(--border); }
 .btn-ghost:hover { color: var(--primary); border-color: var(--primary); }
 

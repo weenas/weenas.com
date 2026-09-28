@@ -26,7 +26,7 @@ SVG 使用普通 path 与镜像变换，可在常见矢量编辑器中编辑；�
 
 ## 在主页中的使用
 
-- 页眉符号与首屏 Logo 用 SVG，通过 `<picture>` 在深色模式下切换到 `-reverse` 版本。
+- 页眉与首屏使用独立符号 SVG，页面同时放浅色版与 `-reverse` 版，按当前主题（`html[data-theme]`）显示其一。
 - 浏览器标签页：`svg/weenas-app-icon.svg`，以及 `favicon/favicon.ico`、`favicon-32.png`、`favicon-16.png`。
 - iOS 主屏幕：`favicon/apple-touch-icon.png`（由 `png/weenas-app-icon-square-512.png` 缩放，不透明方形，圆角由 iOS 添加）。
 - 分享预览图：`png/weenas-app-icon-square-1024.png`。
