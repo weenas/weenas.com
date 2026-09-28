@@ -2,7 +2,7 @@
   "use strict";
 
   var Theme = window.WeenasTheme;
-  var Lang = window.WeenasLang;
+  var lang = document.documentElement.lang.indexOf("zh") === 0 ? "zh" : "en";
 
   var THEME_TEXT = {
     zh: { label: "主题", auto: "跟随系统", light: "浅色", dark: "深色", hint: "点击切换" },
@@ -19,8 +19,8 @@
   var themeButton = document.getElementById("theme-toggle");
 
   function renderThemeToggle() {
-    var en = Lang.get() === "en";
-    var t = THEME_TEXT[Lang.get()];
+    var en = lang === "en";
+    var t = THEME_TEXT[lang];
     var pref = Theme.get();
     var label = t.label + (en ? ": " : "：") + t[pref];
     themeButton.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
@@ -31,9 +31,7 @@
 
   renderThemeToggle();
   Theme.onChange(renderThemeToggle);
-  Lang.onChange(renderThemeToggle);
   themeButton.addEventListener("click", function () { Theme.next(); });
-  document.getElementById("lang-toggle").addEventListener("click", function () { Lang.toggle(); });
 
   document.getElementById("year").textContent = new Date().getFullYear();
 
