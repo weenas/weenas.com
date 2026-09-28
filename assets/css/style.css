@@ -115,6 +115,8 @@ p { margin: 0 0 1em; }
 @media (max-width: 479px) { .nav a:first-child { display: none; } }
 
 .header-actions { display: flex; align-items: center; gap: 8px; }
+/* The theme button needs JS; boot.js sets data-theme. */
+html:not([data-theme]) .theme-toggle { display: none; }
 
 .theme-toggle {
   display: grid;
@@ -287,3 +289,8 @@ p { margin: 0 0 1em; }
   .project { transition: none; }
   .project:hover { transform: none; }
 }
+
+/* 404 page */
+.not-found { padding: 96px 0; }
+.not-found .lead { margin-bottom: 28px; }
+.not-found-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
