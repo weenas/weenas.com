@@ -1,0 +1,16 @@
+// Cloudflare Workers deploy: a static-assets-only Worker serving Astro's dist/.
+// With this file present, `wrangler deploy` uses it as is instead of trying to
+// auto-configure the project (which would add the Astro SSR adapter).
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "weenas-com",
+  "compatibility_date": "2026-10-01",
+  // Runs before every `wrangler deploy`, so the deploy works without a separate build step.
+  "build": { "command": "npm run build" },
+  "assets": {
+    "directory": "./dist",
+    // Unknown paths get dist/404.html with a 404 status; /zh redirects to /zh/.
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  }
+}
