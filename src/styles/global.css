@@ -283,6 +283,7 @@ html:not([data-theme]) .theme-toggle { display: none; }
 }
 .footer-inner { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
 .site-footer p { margin: 0; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
 .site-footer a { color: var(--muted); }
 .site-footer a:hover { color: var(--text); }
 
