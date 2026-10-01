@@ -1,17 +1,8 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Page not found · Weenas</title>
-  <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#061B3C">
-  <link rel="icon" href="/brand-assets/favicon/favicon.ico" sizes="any">
-  <link rel="icon" href="/brand-assets/svg/weenas-app-icon.svg" type="image/svg+xml">
-  <script src="/assets/js/boot.js"></script>
-  <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
+---
+// Cloudflare Pages serves dist/404.html for any path it can't find.
+import Base from "../layouts/Base.astro";
+---
+<Base lang="en" title="Page not found · Weenas" description="This page doesn't exist." ogImageAlt="Weenas logo" path="/404/" noindex>
   <main>
     <section class="hero not-found">
       <div class="container">
@@ -28,5 +19,4 @@
       </div>
     </section>
   </main>
-</body>
-</html>
+</Base>

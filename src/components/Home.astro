@@ -1,0 +1,148 @@
+---
+// The homepage, in either language: src/pages/index.astro (English) and
+// src/pages/zh/index.astro (Chinese).
+import Base from "../layouts/Base.astro";
+import { PROJECTS } from "../data/projects";
+import { LANGS, SITE, UI, type Lang } from "../data/site";
+
+interface Props { lang: Lang }
+
+const { lang } = Astro.props;
+const t = UI[lang];
+const path = LANGS[lang].path;
+const other = t.switchTo;
+const abs = (p: string) => new URL(p, SITE.url).href;
+const org = `${SITE.url}/#organization`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": org,
+      name: SITE.name,
+      url: abs("/"),
+      logo: abs(SITE.logo),
+      sameAs: [SITE.github],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${abs(path)}#website`,
+      name: SITE.name,
+      url: abs(path),
+      inLanguage: LANGS[lang].hreflang,
+      publisher: { "@id": org },
+    },
+    {
+      "@type": "ItemList",
+      name: t.heading,
+      itemListElement: PROJECTS.map((p, i) => {
+        const pt = p.text[lang];
+        return {
+          "@type": "ListItem",
+          position: i + 1,
+          item: {
+            "@type": "SoftwareApplication",
+            name: pt.name,
+            alternateName: pt.alternateName,
+            url: pt.url,
+            description: pt.description,
+            image: abs(p.icon.light),
+            applicationCategory: p.applicationCategory,
+            operatingSystem: p.operatingSystem,
+            downloadUrl: p.download,
+            offers: { "@type": "Offer", price: "0", priceCurrency: pt.priceCurrency },
+            publisher: { "@id": org },
+          },
+        };
+      }),
+    },
+  ],
+};
+---
+<Base
+  lang={lang}
+  title={t.title}
+  description={t.description}
+  ogDescription={t.ogDescription}
+  ogImageAlt={t.ogImageAlt}
+  path={path}
+  alternates
+  jsonLd={jsonLd}
+>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href={path} class="brand" aria-label={SITE.name}>
+        <img class="brand-icon logo-light" src="/brand-assets/svg/weenas-symbol.svg" alt="" width="38" height="32">
+        <img class="brand-icon logo-dark" src="/brand-assets/svg/weenas-symbol-reverse.svg" alt="" width="38" height="32">
+        <span>{SITE.name}</span>
+      </a>
+
+      <nav class="nav" aria-label={t.navLabel}>
+        <a href="#projects">{t.navProjects}</a>
+        <a class="github-link" href={SITE.github}>GitHub</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button"></button>
+        <a class="lang-toggle" href={LANGS[other].path} hreflang={LANGS[other].hreflang} lang={LANGS[other].hreflang} data-lang-link={other}>{t.switchLabel}</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <img class="hero-logo logo-light" src="/brand-assets/svg/weenas-symbol.svg" alt={SITE.name} width="540" height="450" fetchpriority="high">
+        <img class="hero-logo logo-dark" src="/brand-assets/svg/weenas-symbol-reverse.svg" alt={SITE.name} width="540" height="450">
+        <h1>{t.heading}</h1>
+        <p class="lead">{t.lead}</p>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="visually-hidden">{t.navProjects}</h2>
+        <div class="projects">
+          {PROJECTS.map((p) => {
+            const pt = p.text[lang];
+            return (
+              <article class="project">
+                <div class="project-head">
+                  <div class="project-logo" style={`--logo-bg: ${p.tile.light}; --logo-bg-dark: ${p.tile.dark}`}>
+                    <img class="logo-light" src={p.icon.light} alt={pt.name} width="48" height="48" loading="lazy">
+                    <img class="logo-dark" src={p.icon.dark} alt={pt.name} width="48" height="48" loading="lazy">
+                  </div>
+                  <div>
+                    <h3><a href={pt.url}>{pt.name}</a></h3>
+                    <p class="project-tagline">{pt.tagline}</p>
+                  </div>
+                </div>
+                <p class="project-desc">{pt.description}</p>
+                <ul class="tags">
+                  {pt.tags.map((tag) => <li>{tag}</li>)}
+                </ul>
+                <div class="project-actions">
+                  <a class="btn btn-primary" href={pt.url}>{pt.labels.site}</a>
+                  <a class="btn btn-ghost" href={p.source}>{pt.labels.source}</a>
+                  <a class="btn btn-ghost" href={p.download}>{pt.labels.download}</a>
+                </div>
+              </article>
+            );
+          })}
+
+          <div class="project project-more">{t.more}</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year">{new Date().getFullYear()}</span> {SITE.name}. {t.rights}</p>
+      <a href={SITE.github}>GitHub</a>
+    </div>
+  </footer>
+
+  <script src="../scripts/main.js"></script>
+</Base>

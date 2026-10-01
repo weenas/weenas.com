@@ -1,0 +1,32 @@
+---
+import type { ComponentProps } from "astro/types";
+import Seo from "../components/Seo.astro";
+import { LANGS, SITE } from "../data/site";
+import boot from "../scripts/boot.js?raw";
+import "../styles/global.css";
+
+type Props = ComponentProps<typeof Seo>;
+const props = Astro.props;
+---
+<!doctype html>
+<html lang={LANGS[props.lang].hreflang}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <Seo {...props} />
+  <meta name="theme-color" content={SITE.themeColor}>
+
+  <link rel="icon" href="/brand-assets/favicon/favicon.ico" sizes="any">
+  <link rel="icon" href="/brand-assets/svg/weenas-app-icon.svg" type="image/svg+xml">
+  <link rel="icon" href="/brand-assets/favicon/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/brand-assets/favicon/favicon-16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="/brand-assets/favicon/apple-touch-icon.png" sizes="180x180">
+  <link rel="manifest" href="/brand-assets/favicon/site.webmanifest">
+
+  <!-- Inline and blocking: sets the theme and language redirect before the first paint. -->
+  <script is:inline set:html={boot} />
+</head>
+<body>
+  <slot />
+</body>
+</html>
