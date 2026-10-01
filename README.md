@@ -18,7 +18,7 @@ src/components/Seo.astro   <head> 里的 SEO 标签：title、description、cano
 src/layouts/Base.astro     页面骨架：favicon、内联 boot.js、全局样式
 src/pages/index.astro      英文主页（/）
 src/pages/zh/index.astro   中文主页（/zh/）
-src/pages/404.astro        404 页面（Cloudflare Pages 会自动使用 404.html）
+src/pages/404.astro        404 页面（未知路径返回 404.html）
 src/pages/sitemap.xml.ts   生成 /sitemap.xml（含 hreflang）
 src/styles/global.css      样式（构建时内联进页面）
 src/scripts/boot.js        主题与语言跳转，内联在 <head> 中执行，避免闪烁
@@ -28,7 +28,7 @@ public/                    原样发布的静态文件：
   assets/img/og-image.png  社交分享图（1200×630）
   assets/img/projects/     各项目图标（castbay-light/-dark.svg 取自 AndroPlay 仓库 branding/castbay-signal-final/symbol-light/-dark.svg）
   robots.txt               搜索引擎抓取说明
-  _headers                 Cloudflare Pages 响应头（缓存、安全）
+  _headers                 Cloudflare 响应头（缓存、安全）
 ```
 
 首页使用 `public/brand-assets/svg/` 下的矢量 Logo，深色主题下显示反白版；右上角可切换主题（跟随系统 / 浅色 / 深色，默认跟随系统），并接入 favicon、Apple Touch Icon、Web Manifest 和社交分享图片，详见 [品牌说明](public/brand-assets/README.md)。
@@ -60,4 +60,12 @@ npm run preview   # 预览 dist/
 
 ## 部署
 
-用 Cloudflare Pages 部署：框架预设选 Astro，构建命令 `npm run build`，输出目录 `dist`，Node 版本由 `.node-version` 指定。再把 `weenas.com` 和 `www.weenas.com` 绑定为自定义域名。
+部署在 Cloudflare Workers 上，只用静态资源（不跑服务端代码），配置见 [wrangler.jsonc](wrangler.jsonc)。推送到 `main` 后，Workers Builds 执行 `npx wrangler deploy`：它会先运行 `npm run build`，再把 `dist/` 发布出去。找不到的路径返回 `404.html`，`/zh` 自动跳转到 `/zh/`。
+
+本地模拟线上环境：
+
+```bash
+npx wrangler dev
+```
+
+`wrangler.jsonc` 不能删：没有它时，wrangler 会自动给项目加上 Astro 的 Cloudflare 服务端适配器。
