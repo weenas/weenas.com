@@ -23,6 +23,7 @@ const jsonLd = {
       name: SITE.name,
       url: abs("/"),
       logo: abs(SITE.logo),
+      email: SITE.email,
       sameAs: [SITE.github],
     },
     {
@@ -140,7 +141,10 @@ const jsonLd = {
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>&copy; <span id="year">{new Date().getFullYear()}</span> {SITE.name}. {t.rights}</p>
-      <a href={SITE.github}>GitHub</a>
+      <div class="footer-links">
+        <span>{t.contact}{lang === "zh" ? "：" : ": "}<a href={`mailto:${SITE.email}`}>{SITE.email}</a></span>
+        <a href={SITE.github}>GitHub</a>
+      </div>
     </div>
   </footer>
 
