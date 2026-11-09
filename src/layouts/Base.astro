@@ -16,10 +16,14 @@ const props = Astro.props;
   <Seo {...props} />
   <meta name="theme-color" content={SITE.themeColor}>
 
-  <link rel="icon" href="/brand-assets/favicon/favicon.ico?v=2" sizes="any">
-  <link rel="icon" href="/brand-assets/favicon/favicon.svg?v=2" type="image/svg+xml">
-  <link rel="icon" href="/brand-assets/favicon/favicon-32.png?v=2" type="image/png" sizes="32x32">
-  <link rel="icon" href="/brand-assets/favicon/favicon-16.png?v=2" type="image/png" sizes="16x16">
+  <link rel="icon" href="/brand-assets/favicon/favicon.ico?v=3" sizes="any" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="/brand-assets/favicon/favicon-dark.ico?v=3" sizes="any" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="/brand-assets/favicon/favicon.svg?v=3" type="image/svg+xml" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="/brand-assets/favicon/favicon-dark.svg?v=3" type="image/svg+xml" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="/brand-assets/favicon/favicon-32.png?v=3" type="image/png" sizes="32x32" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="/brand-assets/favicon/favicon-dark-32.png?v=3" type="image/png" sizes="32x32" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="/brand-assets/favicon/favicon-16.png?v=3" type="image/png" sizes="16x16" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="/brand-assets/favicon/favicon-dark-16.png?v=3" type="image/png" sizes="16x16" media="(prefers-color-scheme: dark)">
   <link rel="apple-touch-icon" href="/brand-assets/favicon/apple-touch-icon.png" sizes="180x180">
   <link rel="manifest" href="/brand-assets/favicon/site.webmanifest">
 

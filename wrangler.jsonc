@@ -12,5 +12,7 @@
     // Unknown paths get dist/404.html with a 404 status; /zh redirects to /zh/.
     "not_found_handling": "404-page",
     "html_handling": "auto-trailing-slash"
-  }
+  },
+  // Preview builds serve only the public static site; they don't need production resources.
+  "previews": {}
 }
