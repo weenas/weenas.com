@@ -166,13 +166,7 @@ html:not([data-theme]) .theme-toggle { display: none; }
   pointer-events: none;
   z-index: -1;
 }
-.hero-logo {
-  width: 132px;
-  height: auto;
-  margin: 0 auto 28px;
-}
 @media (max-width: 479px) {
-  .hero-logo { width: 108px; }
   .header-inner { gap: 12px; }
 }
 .hero h1 {
