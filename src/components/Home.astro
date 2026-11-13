@@ -51,7 +51,7 @@ const jsonLd = {
             image: abs(p.icon.light),
             applicationCategory: p.applicationCategory,
             operatingSystem: p.operatingSystem,
-            downloadUrl: p.download,
+            ...(p.download ? { downloadUrl: p.download } : {}),
             offers: { "@type": "Offer", price: "0", priceCurrency: pt.priceCurrency },
             publisher: { "@id": org },
           },
@@ -123,8 +123,8 @@ const jsonLd = {
                 </ul>
                 <div class="project-actions">
                   <a class="btn btn-primary" href={pt.url}>{pt.labels.site}</a>
-                  <a class="btn btn-ghost" href={p.source}>{pt.labels.source}</a>
-                  <a class="btn btn-ghost" href={p.download}>{pt.labels.download}</a>
+                  {p.source && pt.labels.source && <a class="btn btn-ghost" href={p.source}>{pt.labels.source}</a>}
+                  {p.download && pt.labels.download && <a class="btn btn-ghost" href={p.download}>{pt.labels.download}</a>}
                 </div>
               </article>
             );
