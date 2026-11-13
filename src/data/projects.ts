@@ -10,7 +10,7 @@ interface ProjectText {
   description: string;
   tags: string[];
   url: string;
-  labels: { site: string; source: string; download: string };
+  labels: { site: string; source?: string; download?: string };
   priceCurrency: string;
 }
 
@@ -20,8 +20,8 @@ export interface Project {
   icon: { light: string; dark: string };
   /** Tile colours behind the icon. */
   tile: { light: string; dark: string };
-  source: string;
-  download: string;
+  source?: string;
+  download?: string;
   applicationCategory: string;
   operatingSystem: string;
   text: Record<Lang, ProjectText>;
@@ -33,7 +33,6 @@ export const PROJECTS: Project[] = [
     icon: { light: "/assets/img/projects/castbay-light.svg", dark: "/assets/img/projects/castbay-dark.svg" },
     tile: { light: "#F7F3FF", dark: "#181225" },
     source: "https://github.com/weenas/castbay",
-    download: "https://github.com/weenas/castbay/releases",
     applicationCategory: "MultimediaApplication",
     operatingSystem: "Android TV 8.0+",
     text: {
@@ -44,7 +43,7 @@ export const PROJECTS: Project[] = [
         description: "Lets an Android TV receive AirPlay screen mirroring, music and video from iPhone, iPad and Mac, plus the cast button in video and music apps (DLNA). Free, open source, no ads.",
         tags: ["Android TV", "AirPlay", "DLNA", "Open source"],
         url: "https://castbay.weenas.com/",
-        labels: { site: "Visit website", source: "Source", download: "Download" },
+        labels: { site: "Visit website", source: "Source" },
         priceCurrency: "USD",
       },
       zh: {
@@ -54,7 +53,36 @@ export const PROJECTS: Project[] = [
         description: "让 Android 电视接收 iPhone、iPad、Mac 的 AirPlay 屏幕镜像、音乐和视频，也支持视频和音乐 App 自带的投屏按钮（DLNA）。免费、开源、无广告。",
         tags: ["Android TV", "AirPlay", "DLNA", "开源"],
         url: "https://castbay.weenas.com/zh/",
-        labels: { site: "访问官网", source: "源码", download: "下载" },
+        labels: { site: "访问官网", source: "源码" },
+        priceCurrency: "CNY",
+      },
+    },
+  },
+  {
+    id: "gamebay",
+    icon: { light: "/assets/img/projects/gamebay-light.svg", dark: "/assets/img/projects/gamebay-dark.svg" },
+    tile: { light: "#EAF0FF", dark: "#1D2633" },
+    applicationCategory: "GameApplication",
+    operatingSystem: "Web, Android TV",
+    text: {
+      en: {
+        name: "GameBay",
+        alternateName: "游乐湾",
+        tagline: "A game platform for Android TV and the web",
+        description: "Browse, discover and play lightweight games on Android TV or in a web browser, with support for TV remotes, gamepads and keyboards.",
+        tags: ["Browser games", "Android TV", "Gamepad"],
+        url: "https://gamebay.weenas.com/",
+        labels: { site: "Visit website" },
+        priceCurrency: "USD",
+      },
+      zh: {
+        name: "游乐湾 GameBay",
+        alternateName: "GameBay",
+        tagline: "面向安卓电视和网页的小游戏平台",
+        description: "在安卓电视或浏览器中浏览、发现并游玩轻量小游戏，支持电视遥控器、手柄和键盘操作。",
+        tags: ["网页小游戏", "Android TV", "手柄"],
+        url: "https://gamebay.weenas.com/",
+        labels: { site: "访问 GameBay" },
         priceCurrency: "CNY",
       },
     },
